@@ -10,7 +10,7 @@ GPIO.setwarnings(False)
 # Set the GPIO pin number
 led_GREEN = 7
 led_RED= 8
-led_BLUE = 10
+led_YELLOW = 10
 
 # Set the pin as output
 GPIO.setup(led_GREEN, GPIO.OUT)
@@ -33,7 +33,7 @@ def window():
    button2.clicked.connect(button2_clicked)
 
    button3 = QPushButton(widget)
-   button3.setText("BLUE")
+   button3.setText("YELLOW")
    button3.move(64,96)
    button3.clicked.connect(button3_clicked)
 
@@ -42,25 +42,25 @@ def window():
    widget.show()
    sys.exit(app.exec_())
 
-def goodbye(): //Called when we close the program to turn off LED's
+def goodbye(): #Called when we close the program to turn off LEDs
   GPIO.output(led_GREEN, GPIO.LOW) 
   GPIO.output(led_RED, GPIO.LOW)
-  GPIO.output(led_BLUE, GPIO.LOW)
+  GPIO.output(led_YELLOW, GPIO.LOW)
 
 
-atexit.register(goodbye) //When we close the program window run goodbye
+atexit.register(goodbye) #When we close the program window run goodbye
 
 def led(ledid):
   GPIO.output(led_GREEN, GPIO.LOW)
   GPIO.output(led_RED, GPIO.LOW)
-  GPIO.output(led_BLUE, GPIO.LOW)
+  GPIO.output(led_YELLOW, GPIO.LOW)
 
   if ledid == "1":
     GPIO.output(led_GREEN, GPIO.HIGH)
   if ledid == "2":
     GPIO.output(led_RED, GPIO.HIGH)
   if ledid == "3":
-    GPIO.output(led_BLUE, GPIO.HIGH)
+    GPIO.output(led_YELLOW, GPIO.HIGH)
   
 
 def button1_clicked():
