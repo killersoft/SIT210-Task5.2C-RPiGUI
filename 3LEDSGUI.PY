@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import sys
+import atexit
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
@@ -32,7 +33,7 @@ def window():
    button2.clicked.connect(button2_clicked)
 
    button3 = QPushButton(widget)
-   button3.setText("YELLOW")
+   button3.setText("BLUE")
    button3.move(64,96)
    button3.clicked.connect(button3_clicked)
 
@@ -40,6 +41,14 @@ def window():
    widget.setWindowTitle("TASK 5.2C")
    widget.show()
    sys.exit(app.exec_())
+
+def goodbye(): //Called when we close the program to turn off LED's
+  GPIO.output(led_GREEN, GPIO.LOW) 
+  GPIO.output(led_RED, GPIO.LOW)
+  GPIO.output(led_BLUE, GPIO.LOW)
+
+
+atexit.register(goodbye) //When we close the program window run goodbye
 
 def led(ledid):
   GPIO.output(led_GREEN, GPIO.LOW)
