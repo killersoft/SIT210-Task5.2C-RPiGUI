@@ -15,7 +15,7 @@ led_YELLOW = 10
 # Set the pin as output
 GPIO.setup(led_GREEN, GPIO.OUT)
 GPIO.setup(led_RED, GPIO.OUT)
-GPIO.setup(led_BLUE, GPIO.OUT)
+GPIO.setup(led_YELLOW, GPIO.OUT)
 
 
 def window():
